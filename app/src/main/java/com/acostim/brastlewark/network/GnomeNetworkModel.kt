@@ -33,7 +33,7 @@ data class GnomeNetworkModel(
 
 )
 
-data class Brastlewark(
+data class BrastlewarkNetwork(
 
     @Json(name = "Brastlewark")
     val brastlewark: List<GnomeNetworkModel>
