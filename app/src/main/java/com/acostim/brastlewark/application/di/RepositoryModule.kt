@@ -1,8 +1,8 @@
-package com.acostim.brastlewark.di
+package com.acostim.brastlewark.application.di
 
-import com.acostim.brastlewark.network.BrastlewarkService
-import com.acostim.brastlewark.repository.BrastlewarkRepository
-import com.acostim.brastlewark.repository.BrastlewarkRepositoryImpl
+import com.acostim.brastlewark.data.remote.BrastlewarkService
+import com.acostim.brastlewark.domain.BrastlewarkRepository
+import com.acostim.brastlewark.domain.BrastlewarkRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

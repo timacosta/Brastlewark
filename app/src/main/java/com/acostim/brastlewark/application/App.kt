@@ -1,4 +1,4 @@
-package com.acostim.brastlewark
+package com.acostim.brastlewark.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

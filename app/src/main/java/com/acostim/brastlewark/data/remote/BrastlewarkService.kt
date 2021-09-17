@@ -1,5 +1,7 @@
-package com.acostim.brastlewark.network
+package com.acostim.brastlewark.data.remote
 
+import com.acostim.brastlewark.data.model.BrastlewarkCity
+import com.acostim.brastlewark.data.model.Gnome
 import retrofit2.http.GET
 
 
@@ -10,6 +12,6 @@ interface BrastlewarkService {
     }
 
     @GET(BRASTLEWARK_PATH)
-    suspend fun getAllGnomes(): BrastlewarkNetwork
+    suspend fun getAllGnomes(): BrastlewarkCity
 
 }

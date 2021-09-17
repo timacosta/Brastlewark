@@ -6,6 +6,7 @@ buildscript {
         hilt_version = "2.38.1"
         hilt_viewmodels = "1.0.0-alpha03"
         glide_version = "4.12.0"
+        nav_version = "2.3.5"
     }
 
     repositories {
@@ -16,6 +17,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:7.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
