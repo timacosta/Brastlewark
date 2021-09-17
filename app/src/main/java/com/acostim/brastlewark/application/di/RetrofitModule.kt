@@ -1,6 +1,6 @@
-package com.acostim.brastlewark.di
+package com.acostim.brastlewark.application.di
 
-import com.acostim.brastlewark.network.BrastlewarkService
+import com.acostim.brastlewark.data.remote.BrastlewarkService
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
+import com.acostim.brastlewark.application.AppConstants.BASE_URL
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -21,12 +22,13 @@ object RetrofitModule {
         return OkHttpClient().newBuilder().build()
     }
 
+
     @Provides
     @Singleton
-    fun provideRetrofit(moshi: Moshi) : Retrofit.Builder {
+    fun provideRetrofitInstance() : Retrofit.Builder {
         return Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com/")
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .baseUrl(BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().build()))
     }
 
     @Provides
