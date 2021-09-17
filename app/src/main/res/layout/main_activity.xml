@@ -18,7 +18,7 @@
         />
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/navHostFragment"
         android:name="com.acostim.brastlewark.ui.main.MainFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
