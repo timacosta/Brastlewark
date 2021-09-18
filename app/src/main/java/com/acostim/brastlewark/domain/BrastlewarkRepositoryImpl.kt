@@ -13,13 +13,13 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
 
 @ExperimentalCoroutinesApi
 @ActivityRetainedScoped
 class BrastlewarkRepositoryImpl
-constructor(
-    private val brastlewarkService: BrastlewarkService,
+@Inject constructor(
     private val networkDataSource: NetworkDataSource,
     private val localDataSource: LocalDataSource,
     ): BrastlewarkRepository {
@@ -45,6 +45,7 @@ constructor(
         }
 
     override suspend fun getCachedGnomes(): Resource<List<Gnome>> {
-        return localDataSource.getCachedCocktails()
+        return localDataSource.getCachedGnomes()
     }
+
 }

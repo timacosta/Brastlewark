@@ -1,4 +1,4 @@
-package com.acostim.brastlewark.utils.extensions
+package com.acostim.brastlewark.utils.extensions.glide
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
