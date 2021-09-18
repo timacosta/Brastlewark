@@ -1,13 +1,15 @@
 package com.acostim.brastlewark.data.model
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.acostim.brastlewark.data.local.GnomeEntity
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
-
+@Parcelize
 data class Gnome(
 
     @SerializedName("id")
@@ -37,7 +39,7 @@ data class Gnome(
     @SerializedName("friends")
     val friends: List<String>
 
-)
+): Parcelable
 
 data class BrastlewarkCity(
     @SerializedName("Brastlewark")
