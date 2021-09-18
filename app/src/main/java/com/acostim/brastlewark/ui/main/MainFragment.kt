@@ -1,15 +1,19 @@
 package com.acostim.brastlewark.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.acostim.brastlewark.R
+import com.acostim.brastlewark.core.Resource
 import com.acostim.brastlewark.data.model.Gnome
 import com.acostim.brastlewark.databinding.MainFragmentBinding
 import com.acostim.brastlewark.presentation.BrastlewarkViewModel
 import com.acostim.brastlewark.ui.main.adapter.BrastlewarkAdapter
+import com.acostim.brastlewark.utils.extensions.ui.*
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -36,9 +40,37 @@ class MainFragment : Fragment(R.layout.main_fragment),
 
         binding = MainFragmentBinding.bind(view)
 
-        //TODO: Create layout and bindings
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = adapter
+
+        binding.searchView.onQueryTextChanged {
+            viewModel.setGnome(it)
+        }
 
         viewModel.fetchGnomeList.observe(viewLifecycleOwner, Observer { result ->
+            binding.progressBar.showIf { result is Resource.Loading }
+
+            when(result) {
+                is Resource.Loading -> {
+                    binding.emptyContainer.root.hide()
+                    Log.d("Loading: ", "$result")
+                }
+                is Resource.Success -> {
+                    if(result.data.isEmpty()) {
+                        Log.d("Empty: ", "$result")
+                        binding.recyclerView.hide()
+                        binding.emptyContainer.root.show()
+                        return@Observer
+                    }
+                    Log.d("Data: ", "$result")
+                    binding.recyclerView.show()
+                    adapter.setGnomeList(result.data)
+                    binding.emptyContainer.root.hide()
+                }
+                is Resource.Failure -> {
+                    showToast("Error during network call ${result.exception}")
+                }
+            }
 
         })
 

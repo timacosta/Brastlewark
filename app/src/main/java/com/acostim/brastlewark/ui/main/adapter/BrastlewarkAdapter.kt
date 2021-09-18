@@ -3,8 +3,10 @@ package com.acostim.brastlewark.ui.main.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil.DiffResult.NO_POSITION
 import androidx.recyclerview.widget.RecyclerView
 import com.acostim.brastlewark.R
+import com.acostim.brastlewark.core.BaseViewHolder
 import com.acostim.brastlewark.data.model.Gnome
 import com.acostim.brastlewark.databinding.GnomeItemBinding
 import com.bumptech.glide.Glide
@@ -12,7 +14,7 @@ import com.bumptech.glide.Glide
 class BrastlewarkAdapter(
     private val context: Context,
     private val itemClickListener: OnGnomeClickListener
-): RecyclerView.Adapter<BrastlewarkViewHolder>() {
+): RecyclerView.Adapter<BaseViewHolder<*>>() {
 
 
     private var gnomeList = listOf<Gnome>()
@@ -27,12 +29,23 @@ class BrastlewarkAdapter(
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BrastlewarkViewHolder =
-        GnomeItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            .run { BrastlewarkViewHolder(this) }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BrastlewarkViewHolder {
+        val itemBinding =  GnomeItemBinding.inflate(LayoutInflater.from(context), parent, false)
+
+        val holder = BrastlewarkViewHolder(itemBinding)
+
+        itemBinding.root.setOnClickListener {
+            val position = holder.adapterPosition.takeIf { it != NO_POSITION } ?: return@setOnClickListener
+            itemClickListener.onGnomeClick(gnomeList[position], position)
+        }
+
+        return holder
+
+    }
 
 
-    override fun onBindViewHolder(holder: BrastlewarkViewHolder, position: Int) {
+
+    override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
         when(holder) {
             is BrastlewarkViewHolder -> holder.bind(gnomeList[position])
         }
@@ -42,8 +55,8 @@ class BrastlewarkAdapter(
 
 
 }
-data class BrastlewarkViewHolder(val binding: GnomeItemBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(gnome: Gnome) {
+data class BrastlewarkViewHolder(val binding: GnomeItemBinding) : BaseViewHolder<Gnome>(binding.root) {
+    override fun bind(gnome: Gnome) {
         with(binding) {
             tvName.text = gnome.name
             tvFriendsCount.text = "${gnome.friends.size}"
