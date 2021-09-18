@@ -3,6 +3,7 @@ package com.acostim.brastlewark.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.acostim.brastlewark.data.local.GnomeEntity
 import com.squareup.moshi.Json
 
 data class Gnome(
@@ -41,35 +42,7 @@ data class BrastlewarkCity(
     val brastlewark: List<Gnome>
 )
 
-@Entity(tableName = "gnomeTable")
-data class GnomeEntity(
-    @PrimaryKey
-    val id: Int,
 
-    @ColumnInfo(name = "name")
-    val name: String,
-
-    @ColumnInfo(name = "thumbnail")
-    val thumbnail: String,
-
-    @ColumnInfo(name = "age")
-    val age: Int,
-
-    @ColumnInfo(name = "weight")
-    val weight: Double,
-
-    @ColumnInfo(name = "height")
-    val height: Double,
-
-    @ColumnInfo(name = "hair_color")
-    val hair_color: String,
-
-    @ColumnInfo(name = "professions")
-    val professions: List<String>,
-
-    @ColumnInfo(name = "friends")
-    val friends: List<String>
-)
 
 fun List<GnomeEntity>.asGnomeList(): List<Gnome> = this.map { gnome ->
     Gnome(

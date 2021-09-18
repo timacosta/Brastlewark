@@ -1,11 +1,17 @@
 package com.acostim.brastlewark.data.local
 
 import androidx.room.Dao
-import com.acostim.brastlewark.data.model.Gnome
-import com.acostim.brastlewark.data.model.GnomeEntity
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+
 
 @Dao
 interface GnomeDao {
-    //TODO: Add Query
+    @Query("SELECT * FROM gnomeTable")
     suspend fun getAllGnomes(): List<GnomeEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertGnome(gnome: GnomeEntity)
+
 }

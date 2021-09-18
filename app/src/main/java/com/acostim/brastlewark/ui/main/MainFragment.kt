@@ -2,18 +2,16 @@ package com.acostim.brastlewark.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.Observer
 import com.acostim.brastlewark.R
 import com.acostim.brastlewark.data.model.Gnome
-import com.acostim.brastlewark.databinding.MainActivityBinding
 import com.acostim.brastlewark.databinding.MainFragmentBinding
 import com.acostim.brastlewark.presentation.BrastlewarkViewModel
 import com.acostim.brastlewark.ui.main.adapter.BrastlewarkAdapter
 import dagger.hilt.android.AndroidEntryPoint
+
 
 
 @AndroidEntryPoint
@@ -36,8 +34,13 @@ class MainFragment : Fragment(R.layout.main_fragment),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = MainFragmentBinding.bind(view)
+        binding = MainFragmentBinding.bind(view)
 
+        //TODO: Create layout and bindings
+
+        viewModel.fetchGnomeList.observe(viewLifecycleOwner, Observer { result ->
+
+        })
 
     }
 
