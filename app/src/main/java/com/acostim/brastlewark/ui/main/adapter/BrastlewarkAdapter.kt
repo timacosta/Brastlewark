@@ -9,7 +9,8 @@ import com.acostim.brastlewark.R
 import com.acostim.brastlewark.core.BaseViewHolder
 import com.acostim.brastlewark.data.model.Gnome
 import com.acostim.brastlewark.databinding.GnomeItemBinding
-import com.bumptech.glide.Glide
+import com.acostim.brastlewark.utils.extensions.glide.load
+
 
 class BrastlewarkAdapter(
     private val context: Context,
@@ -63,9 +64,9 @@ data class BrastlewarkViewHolder(val binding: GnomeItemBinding) : BaseViewHolder
             tvProfessionsCount.text = "${gnome.professions.size}"
 
             avatarImageView.setImageBitmap(null)
-            Glide.with(root)
-                .load(gnome.thumbnail)
-                .into(avatarImageView)
+            avatarImageView.load(gnome.thumbnail) {
+                it.circleCrop()
+            }
 
             if(gnome.thumbnail.isNullOrBlank()) {
                 avatarImageView.setImageResource(R.drawable.gnome_image)
