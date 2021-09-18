@@ -4,42 +4,44 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.acostim.brastlewark.data.local.GnomeEntity
+import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
+
 
 data class Gnome(
 
-    @Json(name = "id")
+    @SerializedName("id")
     val id: Int,
 
-    @Json(name = "name")
+    @SerializedName("name")
     val name: String,
 
-    @Json(name = "thumbnail")
+    @SerializedName("thumbnail")
     val thumbnail: String,
 
-    @Json(name = "age")
+    @SerializedName("age")
     val age: Int,
 
-    @Json(name = "weight")
+    @SerializedName("weight")
     val weight: Double,
 
-    @Json(name = "height")
+    @SerializedName("height")
     val height: Double,
 
-    @Json(name = "hair_color")
+    @SerializedName("hair_color")
     val hair_color: String,
 
-    @Json(name = "professions")
+    @SerializedName("professions")
     val professions: List<String>,
 
-    @Json(name = "friends")
+    @SerializedName("friends")
     val friends: List<String>
 
 )
 
 data class BrastlewarkCity(
-    @Json(name = "Brastlewark")
-    val brastlewark: List<Gnome>
+    @SerializedName("Brastlewark")
+    val brastlewark: List<Gnome> = listOf()
 )
 
 
