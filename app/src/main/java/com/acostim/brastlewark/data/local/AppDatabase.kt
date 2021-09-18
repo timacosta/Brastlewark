@@ -1,9 +1,12 @@
 package com.acostim.brastlewark.data.local
 
 import androidx.room.Database
-import com.acostim.brastlewark.data.model.GnomeEntity
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+
 
 @Database(entities = [GnomeEntity::class], version = 1, exportSchema = false)
-abstract class AppDatabase {
+@TypeConverters(AppConverter::class)
+abstract class AppDatabase: RoomDatabase(){
     abstract fun gnomeDao(): GnomeDao
 }

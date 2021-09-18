@@ -11,4 +11,8 @@ class LocalDataSource @Inject constructor(private val gnomeDao: GnomeDao){
     suspend fun getCachedGnomes(): Resource<List<Gnome>> {
         return Resource.Success(gnomeDao.getAllGnomes().asGnomeList())
     }
+
+    suspend fun saveGnome(gnome: GnomeEntity) {
+        gnomeDao.insertGnome(gnome)
+    }
 }
