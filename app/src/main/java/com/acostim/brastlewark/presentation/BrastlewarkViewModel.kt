@@ -1,6 +1,7 @@
 package com.acostim.brastlewark.presentation
 
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.acostim.brastlewark.core.Resource
 import com.acostim.brastlewark.domain.BrastlewarkRepository
@@ -19,7 +20,7 @@ constructor(
     private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val currentGnomeName = savedStateHandle.getLiveData<String>("gnomeName", "Tobus Quickwhistle")
+    private val currentGnomeName = savedStateHandle.getLiveData<String>("gnomeName", "")
 
     fun setGnome(gnomeName: String) {
         currentGnomeName.value = gnomeName
@@ -31,6 +32,7 @@ constructor(
             try {
                 repository.getAllGnomes().collect {
                     emit(it)
+                    Log.d("fetchGnomeList: ", "$it")
                 }
             } catch (e: Exception) {
                 emit(Resource.Failure(e))
