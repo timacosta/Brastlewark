@@ -38,7 +38,7 @@ class GnomeDetailsFragment : Fragment(R.layout.fragment_gnome_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = "${gnome.name}"
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = gnome.name
 
         binding = FragmentGnomeDetailsBinding.bind(view)
 
@@ -46,8 +46,12 @@ class GnomeDetailsFragment : Fragment(R.layout.fragment_gnome_details) {
             it.centerCrop()
         }
 
-        binding.tvGnomeDetailName.text = gnome.name
-        binding.tvGnomeDesc.text = gnome.age.toString()
+        binding.tvAge.text = gnome.age.toString()
+        binding.tvWeight.text = gnome.weight.toString()
+        binding.tvHeight.text = gnome.height.toString()
+        binding.tvHairColor.text = gnome.hair_color
+        binding.tvProfessions.text = gnome.professions.toString().removePrefix("[").removeSuffix("]")
+        binding.tvFriends.text = gnome.friends.toString().removePrefix("[").removeSuffix("]")
 
     }
 
