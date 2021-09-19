@@ -7,6 +7,11 @@ buildscript {
         hilt_viewmodels = "1.0.0-alpha03"
         glide_version = "4.12.0"
         nav_version = "2.3.5"
+        coroutines_version = "1.5.1"
+        ktx_lifecycle_version = "2.3.1"
+        ktx_viewmodel_version = "2.4.0-beta01"
+        lifecycle_extensions_version = "2.2.0"
+        room_version = "2.3.0"
     }
 
     repositories {
