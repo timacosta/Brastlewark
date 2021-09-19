@@ -1,15 +1,15 @@
 package com.acostim.brastlewark.presentation
 
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.acostim.brastlewark.core.Resource
+import com.acostim.brastlewark.data.model.Gnome
 import com.acostim.brastlewark.domain.BrastlewarkRepository
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,27 +17,45 @@ class BrastlewarkViewModel
 @Inject
 constructor(
     private val repository: BrastlewarkRepository,
-    private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val currentGnomeName = savedStateHandle.getLiveData<String>("gnomeName", "")
 
-    fun setGnome(gnomeName: String) {
-        currentGnomeName.value = gnomeName
-    }
+    private val _resourceState: MutableLiveData<Resource<List<Gnome>>> = MutableLiveData()
+    val resourceState: LiveData<Resource<List<Gnome>>> = _resourceState
 
-    val fetchGnomeList = currentGnomeName.distinctUntilChanged().switchMap { gnomeName ->
-        liveData(viewModelScope.coroutineContext + Dispatchers.IO) {
-            emit(Resource.Loading)
-            try {
-                repository.getAllGnomes().collect {
-                    emit(it)
-                    Log.d("fetchGnomeList: ", "$it")
+    fun setResourceState(resourceState: ResourceState) {
+
+        _resourceState.value = Resource.Loading
+
+        viewModelScope.launch {
+            when(resourceState){
+                is ResourceState.GetBrastlewarkPopulation -> {
+                    repository.getAllGnomes().onEach { resourceState ->
+                        _resourceState.value = resourceState
+                    }.launchIn(viewModelScope)
                 }
-            } catch (e: Exception) {
-                emit(Resource.Failure(e))
+                is ResourceState.GetFilteredBlastewarkPopulation -> {
+                    val query = resourceState.name.lowercase(Locale.getDefault())
+                    if (query.isNotEmpty()) {
+                        val filteredList = resourceState.gnomeList.filter { gnome ->
+                            gnome.name.lowercase(Locale.getDefault()).contains(query) || gnome.professions.any {
+                                it.lowercase(Locale.getDefault()).contains(
+                                    query
+                                )
+                            }
+                        }
+                        _resourceState.value = Resource.FilteredGnomes(filteredList)
+                    } else {
+                        _resourceState.value = Resource.FilteredGnomes(resourceState.gnomeList)
+                    }
+                }
             }
         }
     }
+}
 
+
+sealed class ResourceState{
+    object GetBrastlewarkPopulation: ResourceState()
+    class GetFilteredBlastewarkPopulation(val name: String, val gnomeList: List<Gnome>) : ResourceState()
 }
