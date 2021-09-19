@@ -3,10 +3,8 @@ package com.acostim.brastlewark.domain
 import com.acostim.brastlewark.core.Resource
 import com.acostim.brastlewark.data.local.GnomeEntity
 import com.acostim.brastlewark.data.local.LocalDataSource
-import com.acostim.brastlewark.data.model.BrastlewarkCity
 import com.acostim.brastlewark.data.model.Gnome
 import com.acostim.brastlewark.data.model.asGnomeEntity
-import com.acostim.brastlewark.data.remote.BrastlewarkService
 import com.acostim.brastlewark.data.remote.NetworkDataSource
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,23 +22,23 @@ class BrastlewarkRepositoryImpl
 @Inject constructor(
     private val networkDataSource: NetworkDataSource,
     private val localDataSource: LocalDataSource,
-    ): BrastlewarkRepository {
+) : BrastlewarkRepository {
 
     override suspend fun getAllGnomes(): Flow<Resource<List<Gnome>>> =
         callbackFlow {
 
-            offer(getCachedGnomes())
+            this.trySend(getCachedGnomes()).isSuccess
 
             networkDataSource.getGnomes().collect {
-                when(it) {
+                when (it) {
                     is Resource.Success -> {
-                        for(gnome in it.data) {
+                        for (gnome in it.data) {
                             saveGnome(gnome.asGnomeEntity())
                         }
-                        offer(getCachedGnomes())
+                        this.trySend(getCachedGnomes()).isSuccess
                     }
                     is Resource.Failure -> {
-                        offer(getCachedGnomes())
+                        this.trySend(getCachedGnomes()).isSuccess
                     }
                 }
             }
