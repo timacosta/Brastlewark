@@ -8,6 +8,31 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.acostim.brastlewark.ui.main.MainFragment"
-        android:label="main_fragment"
-        tools:layout="@layout/main_fragment" />
+        android:label="Brastlewark"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_gnomeDetailsFragment"
+            app:destination="@id/gnomeDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+
+            <argument
+                android:name="gnome"
+                app:argType="com.acostim.brastlewark.data.model.Gnome"
+                app:nullable="false" />
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/gnomeDetailsFragment"
+        android:name="com.acostim.brastlewark.ui.details.GnomeDetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_gnome_details">
+        <argument
+            android:name="gnome"
+            app:argType="com.acostim.brastlewark.data.model.Gnome"
+            app:nullable="false" />
+    </fragment>
 </navigation>

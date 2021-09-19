@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/detail_background_color"
+    tools:context=".ui.details.GnomeDetailsFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_image_size"
+        android:layout_marginHorizontal="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_small"
+        app:cardCornerRadius="@dimen/common_radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/ivGnomeDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/gnome_image"
+            tools:ignore="ContentDescription" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/ivAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:src="@drawable/ic_cake"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="357dp"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvAge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:textColor="@color/white"
+        tools:text="26"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivAge"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView" />
+
+    <ImageView
+        android:id="@+id/ivWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:src="@drawable/ic_weight"
+        app:layout_constraintTop_toBottomOf="@id/ivAge"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_normal"
+        tools:text="39.00 KG"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivAge"
+        app:layout_constraintTop_toBottomOf="@id/ivAge" />
+
+    <ImageView
+        android:id="@+id/ivHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:src="@drawable/ic_height"
+        app:layout_constraintTop_toBottomOf="@id/ivWeight"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvHeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_normal"
+        tools:text="107 cmd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivWeight"
+        app:layout_constraintTop_toBottomOf="@id/ivWeight" />
+
+    <ImageView
+        android:id="@+id/ivHairColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:src="@drawable/ic_dermis"
+        app:layout_constraintTop_toBottomOf="@id/ivHeight"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvHairColor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_normal"
+        tools:text="Pink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivHeight"
+        app:layout_constraintTop_toBottomOf="@id/ivHeight" />
+
+    <ImageView
+        android:id="@+id/ivProfessions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:src="@drawable/ic_construction"
+        app:layout_constraintTop_toBottomOf="@id/ivHairColor"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvProfessions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivHairColor"
+        app:layout_constraintTop_toBottomOf="@id/ivHairColor"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_normal"
+        android:maxLines="1"
+        tools:text="Cook, Baker, Miner"/>
+
+    <ImageView
+        android:id="@+id/ivFriends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        app:layout_constraintTop_toBottomOf="@id/ivProfessions"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_people"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvFriends"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivProfessions"
+        app:layout_constraintTop_toBottomOf="@id/ivProfessions"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_normal"
+        android:maxLines="1"
+        android:layout_margin="@dimen/margin_normal"
+        tools:text="Fizwood Voidtossle"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

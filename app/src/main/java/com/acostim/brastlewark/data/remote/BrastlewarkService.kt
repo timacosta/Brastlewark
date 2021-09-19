@@ -14,6 +14,9 @@ interface BrastlewarkService {
     }
 
     @GET(BRASTLEWARK_PATH)
-    suspend fun getAllGnomes(): BrastlewarkCity
+    suspend fun getAllGnomes(): BrastlewarkCity?
+
+
+
 
 }

@@ -18,7 +18,7 @@ class NetworkDataSource @Inject constructor(
         callbackFlow {
             offer(
                 Resource.Success(
-                    brastlewarkService.getAllGnomes().brastlewark ?: listOf()
+                    brastlewarkService.getAllGnomes()?.brastlewark ?: listOf()
                 )
             )
             awaitClose{ close() }
