@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
+    android:background="@color/detail_background_color"
     tools:context=".ui.main.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -15,7 +15,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Brastlewark"
-        />
+        android:background="@drawable/toolbar_background"
+        app:titleTextColor="@color/white"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"

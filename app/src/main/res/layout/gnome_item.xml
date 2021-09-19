@@ -24,7 +24,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/gnome_image"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvName"
@@ -50,7 +51,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/avatar_image_view"
             app:layout_constraintTop_toBottomOf="@+id/tvName"
-            android:src="@drawable/ic_people_white_24dp"/>
+            android:src="@drawable/ic_people"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tvFriendsCount"
@@ -72,7 +74,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvFriendsCount"
             app:layout_constraintTop_toBottomOf="@+id/tvName"
-            android:src="@drawable/ic_construction_white_24dp"/>
+            android:src="@drawable/ic_construction"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tvProfessionsCount"
