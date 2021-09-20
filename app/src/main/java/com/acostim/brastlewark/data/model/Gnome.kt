@@ -27,7 +27,7 @@ data class Gnome(
     val height: Double,
 
     @SerializedName("hair_color")
-    val hair_color: String,
+    val hairColor: String,
 
     @SerializedName("professions")
     val professions: List<String>,
@@ -66,7 +66,7 @@ fun Gnome.asGnomeEntity(): GnomeEntity =
         this.age,
         this.weight,
         this.height,
-        this.hair_color,
+        this.hairColor,
         this.professions,
         this.friends
     )

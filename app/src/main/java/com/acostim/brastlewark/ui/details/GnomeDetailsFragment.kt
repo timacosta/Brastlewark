@@ -41,7 +41,7 @@ class GnomeDetailsFragment : Fragment(R.layout.fragment_gnome_details) {
         binding.tvAge.text = gnome.age.toString()
         binding.tvWeight.text = gnome.weight.toString().dropLast(4) ?: "N/A"
         binding.tvHeight.text = gnome.height.toString().dropLast(4)
-        binding.tvHairColor.text = gnome.hair_color
+        binding.tvHairColor.text = gnome.hairColor
 
         if(gnome.professions.isEmpty()) {
             binding.tvProfessions.text = "Unemployed"

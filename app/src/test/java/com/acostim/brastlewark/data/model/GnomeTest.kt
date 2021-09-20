@@ -17,7 +17,7 @@ class GnomeTest {
             age = 28,
             weight = 40.0,
             height = 170.0,
-            hair_color = "Blonde",
+            hairColor = "Blonde",
             professions = listOf("Metalworker", "Woodcarver"),
             friends = listOf("Cogwitz Chillwidget", "Tinadette Chillbuster")
         )
@@ -30,7 +30,7 @@ class GnomeTest {
         assertThat(gnome.age).isEqualTo(28)
         assertThat(gnome.weight).isEqualTo(40.0)
         assertThat(gnome.height).isEqualTo(170.0)
-        assertThat(gnome.hair_color).isEqualTo("Blonde")
+        assertThat(gnome.hairColor).isEqualTo("Blonde")
         assertThat(gnome.professions.size).isEqualTo(2)
         assertThat(gnome.friends.size).isEqualTo(2)
     }
