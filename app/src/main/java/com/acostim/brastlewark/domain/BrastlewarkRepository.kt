@@ -11,5 +11,5 @@ import kotlinx.coroutines.flow.Flow
 interface BrastlewarkRepository {
     suspend fun getAllGnomes(): Flow<Resource<List<Gnome>>>
     suspend fun getCachedGnomes(): Resource<List<Gnome>>
-    suspend fun saveGnome(cocktail: GnomeEntity)
+    suspend fun saveGnome(gnome: GnomeEntity)
 }

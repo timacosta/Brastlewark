@@ -32,7 +32,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideCocktailDao(db: AppDatabase) = db.gnomeDao()
+    fun provideGnomeDao(db: AppDatabase) = db.gnomeDao()
 
     @Singleton
     @Provides

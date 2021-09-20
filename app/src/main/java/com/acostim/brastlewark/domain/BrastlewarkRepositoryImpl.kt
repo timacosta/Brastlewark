@@ -49,8 +49,8 @@ class BrastlewarkRepositoryImpl
         return localDataSource.getCachedGnomes()
     }
 
-    override suspend fun saveGnome(cocktail: GnomeEntity) {
-        localDataSource.saveGnome(cocktail)
+    override suspend fun saveGnome(gnome: GnomeEntity) {
+        localDataSource.saveGnome(gnome)
     }
 
 }
