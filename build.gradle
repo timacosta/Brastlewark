@@ -12,6 +12,7 @@ buildscript {
         ktx_viewmodel_version = "2.4.0-beta01"
         lifecycle_extensions_version = "2.2.0"
         room_version = "2.3.0"
+        fragment_testing = "1.4.0-alpha09"
     }
 
     repositories {

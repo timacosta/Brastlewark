@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Brastlewark)
         super.onCreate(savedInstanceState)
         binding = MainActivityBinding.inflate(layoutInflater).also { setContentView(it.root) }
 

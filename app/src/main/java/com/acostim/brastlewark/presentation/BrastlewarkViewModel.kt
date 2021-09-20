@@ -34,7 +34,7 @@ constructor(
                         _resourceState.value = resourceState
                     }.launchIn(viewModelScope)
                 }
-                is ResourceState.GetFilteredBlastewarkPopulation -> {
+                is ResourceState.GetFilteredBrastlewarkPopulation -> {
                     val query = resourceState.name.lowercase(Locale.getDefault())
                     if (query.isNotEmpty()) {
                         val filteredList = resourceState.gnomeList.filter { gnome ->
@@ -57,5 +57,5 @@ constructor(
 
 sealed class ResourceState{
     object GetBrastlewarkPopulation: ResourceState()
-    class GetFilteredBlastewarkPopulation(val name: String, val gnomeList: List<Gnome>) : ResourceState()
+    class GetFilteredBrastlewarkPopulation(val name: String, val gnomeList: List<Gnome>) : ResourceState()
 }

@@ -20,8 +20,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class GnomeDetailsFragment : Fragment(R.layout.fragment_gnome_details) {
 
     private lateinit var binding: FragmentGnomeDetailsBinding
-    private val viewModel by activityViewModels<BrastlewarkViewModel>()
-
     private lateinit var gnome: Gnome
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,11 +45,21 @@ class GnomeDetailsFragment : Fragment(R.layout.fragment_gnome_details) {
         }
 
         binding.tvAge.text = gnome.age.toString()
-        binding.tvWeight.text = gnome.weight.toString()
-        binding.tvHeight.text = gnome.height.toString()
+        binding.tvWeight.text = gnome.weight.toString().dropLast(4) ?: "N/A"
+        binding.tvHeight.text = gnome.height.toString().dropLast(4)
         binding.tvHairColor.text = gnome.hair_color
-        binding.tvProfessions.text = gnome.professions.toString().removePrefix("[").removeSuffix("]")
-        binding.tvFriends.text = gnome.friends.toString().removePrefix("[").removeSuffix("]")
+
+        if(gnome.professions.isEmpty()) {
+            binding.tvProfessions.text = "Unemployed"
+        } else {
+            binding.tvProfessions.text = gnome.professions.toString().removePrefix("[").removeSuffix("]")
+        }
+
+        if(gnome.friends.isEmpty()) {
+            binding.tvFriends.text = "Introvert"
+        } else {
+            binding.tvFriends.text = gnome.friends.toString().removePrefix("[").removeSuffix("]")
+        }
 
     }
 

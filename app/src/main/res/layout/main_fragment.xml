@@ -25,6 +25,7 @@
             android:iconifiedByDefault="false"
             android:imeOptions="actionDone|flagNoExtractUi"
             android:queryBackground="@color/transparent"
+            android:background="#7483E8"
             android:queryHint="Find Brastlewark Inhabitant"
             android:searchHintIcon="@null"
             android:searchIcon="@null"/>

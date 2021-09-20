@@ -58,7 +58,7 @@ class MainFragment : Fragment(R.layout.main_fragment),
 
     private fun configureSearchView() {
         binding.searchView.onQueryTextChanged {
-            viewModel.setResourceState(ResourceState.GetFilteredBlastewarkPopulation(it, gnomeList))
+            viewModel.setResourceState(ResourceState.GetFilteredBrastlewarkPopulation(it, gnomeList))
         }
     }
 

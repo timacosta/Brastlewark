@@ -13,7 +13,7 @@ inline fun SearchView.onQueryTextChanged(crossinline onQueryTextChanged: (String
             return false
         }
 
-        override fun onQueryTextChange(newText: String?): Boolean {
+        override fun onQueryTextChange(newText: String): Boolean {
             return false
         }
     })
