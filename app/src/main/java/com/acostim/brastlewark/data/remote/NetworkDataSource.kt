@@ -16,11 +16,11 @@ class NetworkDataSource @Inject constructor(
 
     suspend fun getGnomes(): Flow<Resource<List<Gnome>>> =
         callbackFlow {
-            offer(
+            this.trySend(
                 Resource.Success(
                     brastlewarkService.getAllGnomes()?.brastlewark ?: listOf()
                 )
-            )
+            ).isSuccess
             awaitClose{ close() }
         }
 
