@@ -1,7 +1,6 @@
 package com.acostim.brastlewark.data.remote
 
 import com.acostim.brastlewark.core.Resource
-import com.acostim.brastlewark.data.model.BrastlewarkCity
 import com.acostim.brastlewark.data.model.Gnome
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose

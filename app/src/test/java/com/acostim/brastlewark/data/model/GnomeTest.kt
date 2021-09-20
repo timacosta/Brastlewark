@@ -1,7 +1,6 @@
 package com.acostim.brastlewark.data.model
 
 import com.google.common.truth.Truth.assertThat
-import junit.framework.TestCase
 import org.junit.Before
 import org.junit.Test
 

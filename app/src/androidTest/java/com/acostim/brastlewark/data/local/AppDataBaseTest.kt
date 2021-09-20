@@ -1,17 +1,14 @@
 package com.acostim.brastlewark.data.local
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.acostim.brastlewark.HiltTestRunner
+import com.google.common.truth.Truth.assertThat
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import javax.inject.Inject
 import javax.inject.Named
 

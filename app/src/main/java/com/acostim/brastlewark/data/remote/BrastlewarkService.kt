@@ -1,9 +1,6 @@
 package com.acostim.brastlewark.data.remote
 
 import com.acostim.brastlewark.data.model.BrastlewarkCity
-import com.acostim.brastlewark.data.model.Gnome
-import dagger.Binds
-import dagger.Component
 import retrofit2.http.GET
 
 
