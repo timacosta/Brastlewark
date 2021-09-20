@@ -36,6 +36,6 @@ class GnomeTest {
         assertThat(gnome.friends.size).isEqualTo(2)
     }
 
-    
+
 
 }
